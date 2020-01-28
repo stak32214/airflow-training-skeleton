@@ -45,9 +45,14 @@ dag = DAG(
 )
 
 
-def get_weekday(execution_date, **context):
+def _get_weekday(execution_date, **context):
     print(execution_date.strftime("%a"))
 
+print_execution_date = PythonOperator(
+    task_id='get_weekday',
+    provide_context=True,
+    python_callable=_get_weekday,
+    dag=dag)
 
 def choose_person(execution_date, **context):
     if execution_date.strftime("%a") == 'Mon':
@@ -56,8 +61,6 @@ def choose_person(execution_date, **context):
         return 'email_alice'
     else:
         return 'email_joe'
-
-
 
 branching = BranchPythonOperator(
     task_id="branching",
