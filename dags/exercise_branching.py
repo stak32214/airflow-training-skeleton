@@ -49,10 +49,19 @@ def get_weekday(execution_date, **context):
     print(execution_date.strftime("%a"))
 
 
+def choose_person(execution_date, **context):
+    if execution_date.strftime("%a") == 'Mon':
+        return 'email_bob'
+    elif execution_date.strftime("%a") == 'Tue':
+        return 'email_alice'
+    else:
+        return 'email_joe'
+
+
 
 branching = BranchPythonOperator(
     task_id="branching",
-    python_callable=get_weekday,
+    python_callable=choose_person,
     provide_context=True,
     dag=dag
 )
