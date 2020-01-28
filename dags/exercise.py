@@ -23,6 +23,7 @@
 #from datetime import date
 import datetime
 
+
 import airflow
 from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
@@ -31,7 +32,7 @@ from airflow.operators.dummy_operator import DummyOperator
 args = {
     'owner': 'Airflow',
     #'start_date': airflow.utils.dates.days_ago(2),
-    'start_date': datetime.date(2020, 1, 27)
+    'start_date': datetime.datetime(2020, 1, 28, 0, 0, 0, 0, datetime.timezone.utc)
 }
 
 dag = DAG(
