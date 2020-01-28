@@ -55,7 +55,7 @@ print_execution_date = PythonOperator(
     python_callable=python_method,
     dag=dag)
 
-print_execution_date >> wait_1
+
 
 
 wait_1 = BashOperator(
@@ -64,7 +64,9 @@ wait_1 = BashOperator(
     dag=dag,
 )
 
-print_execution_date >> wait_5
+print_execution_date >> wait_1
+
+
 
 wait_5 = BashOperator(
     task_id='wait_5',
@@ -72,7 +74,9 @@ wait_5 = BashOperator(
     dag=dag,
 )
 
-print_execution_date >> wait_10
+print_execution_date >> wait_5
+
+
 
 wait_10 = BashOperator(
     task_id='wait_10',
@@ -80,11 +84,13 @@ wait_10 = BashOperator(
     dag=dag,
 )
 
-[wait_1, wait_5, wait_10] >> the_end
+print_execution_date >> wait_10
+
+
 
 the_end = DummyOperator(
     task_id='the_end',
     dag=dag,
 )
 
-
+[wait_1, wait_5, wait_10] >> the_end
