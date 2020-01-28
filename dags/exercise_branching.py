@@ -71,7 +71,7 @@ branching = BranchPythonOperator(
 
 get_weekday >> branching
 
-days = ['alice','bob','joe']
+names = ['alice','bob','joe']
 for name in names:
     branching >> DummyOperator(task_id=f"email_{name}", dag=dag)
 
