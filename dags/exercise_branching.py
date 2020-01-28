@@ -71,11 +71,6 @@ branching = BranchPythonOperator(
 
 get_weekday >> branching
 
-names = ['alice','bob','joe']
-for name in names:
-    branching >> DummyOperator(task_id=f"email_{name}", dag=dag)
-
-
 final_task = BashOperator(
     task_id='final_task',
     trigger_rule="one_success",
@@ -83,6 +78,8 @@ final_task = BashOperator(
     dag=dag,
 )
 
+names = ['alice','bob','joe']
+for name in names:
+    branching >> DummyOperator(task_id=f"email_{name}", dag=dag) >> final_task
 
-[email_joe,email_alice,email_bob] >> final_task
 
