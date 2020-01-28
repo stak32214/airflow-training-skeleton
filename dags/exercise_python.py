@@ -46,8 +46,8 @@ dag = DAG(
 
 
 
-def python_method(ds, **context):
-    print(context['execution_date'])
+def python_method(execution_date, **context):
+    print(execution_date)
 
 print_execution_date = PythonOperator(
     task_id='print_execution_date',
