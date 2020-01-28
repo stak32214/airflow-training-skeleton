@@ -84,5 +84,5 @@ final_task = BashOperator(
 )
 
 
-branching >> final_task
+['email_joe','email_alice','email_bob'] >> final_task
 
