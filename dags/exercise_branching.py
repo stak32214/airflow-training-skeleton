@@ -29,7 +29,7 @@ from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
-from airflow.operators.python import BranchPythonOperator
+from airflow.operators.branch_python_operator import BranchPythonOperator
 
 args = {
     'owner': 'Airflow',
@@ -64,9 +64,13 @@ for name in names:
     branching >> DummyOperator(task_id=f"email_{name}", dag=dag)
 
 
-final_task = DummyOperator(
-    task_id="final_task",
-    trigger_rule="one_success")
+final_task = BashOperator(
+    task_id='final_task',
+    trigger_rule="one_success",
+    bash_command='sleep 1',
+    dag=dag,
+)
+
 
 branching >> final_task
 
