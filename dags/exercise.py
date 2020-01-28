@@ -36,7 +36,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='exercise_first_dag',
+    dag_id='exercise_second_dag',
     default_args=args,
     schedule_interval="0 0 * * *",
     dagrun_timeout=datetime.timedelta(minutes=60),
