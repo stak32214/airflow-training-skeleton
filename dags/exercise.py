@@ -34,7 +34,7 @@ args = {
 dag = DAG(
     dag_id='exercise_first_dag',
     default_args=args,
-    schedule_interval="0 0 * * *",
+    schedule_interval="0 0 * * * ",
     dagrun_timeout=timedelta(minutes=60),
 )
 
