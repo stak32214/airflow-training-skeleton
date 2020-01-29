@@ -48,7 +48,7 @@ dag = DAG(
 
 
 get_data = PostgresToGoogleCloudStorageOperator(
-    postgres_conn_id="test_connection”,
+    postgres_conn_id="test_connection",
     bucket = 'test_bucket312312',
     file = "land_registry_price_paid_uk/{{ ds_nodash }}/test_{}.csv",
     sql = "SELECT * FROM land_registry_price_paid_uk WHERE transfer_date = '{{ ds }}'",
