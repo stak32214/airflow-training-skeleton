@@ -30,6 +30,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.gcs_to_bq import GoogleCloudStorageToBigQueryOperator
+from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 from airflow.contrib.sensors.gcs_sensor import GoogleCloudStorageObjectSensor
 
 args = {
@@ -64,4 +65,12 @@ copy_to_bq = GoogleCloudStorageToBigQueryOperator(
 
 )
 
-sensor >> copy_to_bq
+execute_query = BigQueryOperator(
+    task_id='execute_query',
+    dag=dag,
+    destination_dataset_table = 'airflowbolcom-jan2829-2ad52563.test_dataset.test_table_results',
+    sql="SELECT date, forecast+1 as new_forecast FROM `airflowbolcom-jan2829-2ad52563.test_dataset.test_table`"
+)
+
+
+sensor >> copy_to_bq >> execute_query
