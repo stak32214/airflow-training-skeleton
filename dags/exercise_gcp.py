@@ -39,7 +39,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='exercise_python_dag',
+    dag_id='exercise_gcp_dag',
     default_args=args,
     schedule_interval="0 0 * * *",
     dagrun_timeout=datetime.timedelta(minutes=60),
