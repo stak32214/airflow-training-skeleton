@@ -36,7 +36,7 @@ from airflow.hooks.base_hook import BaseHook
 args = {
     'owner': 'Airflow',
     #'start_date': airflow.utils.dates.days_ago(2),
-    'start_date': datetime.datetime(2019, 1, 1),
+    'start_date': datetime.datetime(2019, 11, 1),
 }
 
 dag = DAG(
