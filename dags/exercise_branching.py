@@ -34,11 +34,11 @@ from airflow.operators.python_operator import PythonOperator, BranchPythonOperat
 args = {
     'owner': 'Airflow',
     #'start_date': airflow.utils.dates.days_ago(2),
-    'start_date': datetime.datetime(2020, 1, 27),
+    'start_date': datetime.datetime(2019, 1, 1),
 }
 
 dag = DAG(
-    dag_id='exercise_branching',
+    dag_id='exercise_branching_history',
     default_args=args,
     schedule_interval="0 0 * * *",
     dagrun_timeout=datetime.timedelta(minutes=60),
