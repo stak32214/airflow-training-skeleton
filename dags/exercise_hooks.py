@@ -29,7 +29,7 @@ from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
-from airflow.contrib.operators.postgres_to_gcs import PostgresToGoogleCloudStorageOperator
+from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
 
 from airflow.hooks.base_hook import BaseHook
 
