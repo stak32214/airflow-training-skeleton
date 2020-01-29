@@ -3,7 +3,6 @@ import pathlib
 import posixpath
 import airflow
 import requests
-
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 
@@ -18,6 +17,7 @@ dag = DAG(
     description="DAG downloading rocket launches from Launch Library.",
     schedule_interval="0 0 * * *"
 )
+
 
 def _download_rocket_launches(ds, tomorrow_ds, **context):
     query = f"https://launchlibrary.net/1.4/launch?startdate={ds}&enddate={tomorrow_ds}"
