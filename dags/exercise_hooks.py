@@ -40,7 +40,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='exercise_hooks_dag_history',
+    dag_id='exercise_hooks',
     default_args=args,
     schedule_interval="0 0 * * *",
     dagrun_timeout=datetime.timedelta(minutes=60),
