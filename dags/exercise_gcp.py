@@ -53,4 +53,14 @@ sensor = GoogleCloudStorageObjectSensor(
     dag=dag,
 )
 
-sensor
+copy_to_gcs = GoogleCloudStorageObjectSensor(
+    task_id = 'copy_to_gcs',
+    dag=dag,
+    bucket='test_bucket312312',
+    source_objects=['test/{{ ds_nodash }}.csv'],
+    destination_project_dataset_table = 'airflowbolcom-jan2829-2ad52563.test_dataset.test_table',
+    skip_leading_rows = 1,
+
+)
+
+sensor >> copy_to_gcs
