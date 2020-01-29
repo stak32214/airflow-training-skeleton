@@ -30,7 +30,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.operators.gcs_to_bq import GoogleCloudStorageToBigQueryOperator
-from airflow.contrib.sensor.gcs_sensor import GoogleCloudStorageObjectSensor
+from airflow.contrib.sensors.gcs_sensor import GoogleCloudStorageObjectSensor
 
 args = {
     'owner': 'Airflow',
