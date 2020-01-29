@@ -69,6 +69,7 @@ copy_to_bq = GoogleCloudStorageToBigQueryOperator(
 execute_query = BigQueryOperator(
     task_id='execute_query',
     dag=dag,
+    use_legacy_sql=False,
     destination_dataset_table = 'airflowbolcom-jan2829-2ad52563.test_dataset.test_table_results',
     bql="SELECT date, forecast+1 as new_forecast FROM `airflowbolcom-jan2829-2ad52563.test_dataset.test_table`",
     write_disposition = 'WRITE_TRUNCATE',
