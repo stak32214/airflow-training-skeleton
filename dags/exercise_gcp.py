@@ -60,6 +60,7 @@ copy_to_bq = GoogleCloudStorageToBigQueryOperator(
     source_objects=['test/{{ ds_nodash }}.csv'],
     destination_project_dataset_table = 'airflowbolcom-jan2829-2ad52563.test_dataset.test_table',
     skip_leading_rows = 1,
+    autodetect=True,
 
 )
 
