@@ -48,6 +48,7 @@ dag = DAG(
 sensor = GoogleCloudStorageObjectSensor(
     task_id='sensor',
     bucket='test_bucket312312',
+    timeout=3600,
     object='test/{{ ds_nodash }}.csv',
     dag=dag,
 )
