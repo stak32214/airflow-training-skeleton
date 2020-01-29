@@ -53,7 +53,7 @@ sensor = GoogleCloudStorageObjectSensor(
     dag=dag,
 )
 
-copy_to_gcs = GoogleCloudStorageObjectSensor(
+copy_to_gcs = GoogleCloudStorageToBigQueryOperator(
     task_id = 'copy_to_gcs',
     dag=dag,
     bucket='test_bucket312312',
